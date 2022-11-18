@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :discussions
   get "about", to:"about#index", as: :about
 
   get "password", to: "passwords#edit", as: :edit_password
@@ -18,7 +19,7 @@ Rails.application.routes.draw do
   patch "password/reset/edit", to: "password_resets#update"
 
 
-  root to: "main#index"
+  root to: "discussions#index"
   # Defines the root path route ("/")
   # root "articles#index"
 end
