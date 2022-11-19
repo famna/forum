@@ -2,8 +2,8 @@ class DiscussionsController < ApplicationController
 
   before_action :set_discussion, only: %i[ show edit update destroy ]
   before_action :require_user_logged_in! , only: %i[ show ]
-
   # GET /discussions or /discussions.json
+  
   def index
     @discussions = Discussion.all
   end
@@ -17,8 +17,7 @@ class DiscussionsController < ApplicationController
   # GET /discussions/new
   
   def new
-   
-              @discussion = Discussion.new
+       @discussion = Discussion.new
   
   end
 
@@ -27,10 +26,9 @@ class DiscussionsController < ApplicationController
   end
 
   # POST /discussions or /discussions.json
-  def create
-    
+  def create   
     @discussion = Discussion.new(discussion_params)
-
+    @discussion["user_id"] = session[:user_id]
     respond_to do |format|
       if @discussion.save
         format.html { redirect_to discussion_url(@discussion), notice: "Discussion was successfully created." }
