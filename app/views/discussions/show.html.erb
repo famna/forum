@@ -1,6 +1,15 @@
 
 <%= render @discussion %>
 
+<div id="<%= dom_id @discussion %>">
+  <p class="text-break">
+    <strong>Content:</strong>
+    <%= @discussion.content %>
+  </p>
+
+</div>
+
+
 <div>
 
   <%= link_to "Edit this discussion", edit_discussion_path(@discussion) %> |

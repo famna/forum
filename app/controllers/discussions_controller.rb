@@ -1,5 +1,7 @@
 class DiscussionsController < ApplicationController
+
   before_action :set_discussion, only: %i[ show edit update destroy ]
+  before_action :require_user_logged_in! , only: %i[ show ]
 
   # GET /discussions or /discussions.json
   def index
@@ -8,11 +10,16 @@ class DiscussionsController < ApplicationController
 
   # GET /discussions/1 or /discussions/1.json
   def show
+    @discussions = Discussion.all
+
   end
 
   # GET /discussions/new
+  
   def new
-    @discussion = Discussion.new
+   
+              @discussion = Discussion.new
+  
   end
 
   # GET /discussions/1/edit
@@ -21,6 +28,7 @@ class DiscussionsController < ApplicationController
 
   # POST /discussions or /discussions.json
   def create
+    
     @discussion = Discussion.new(discussion_params)
 
     respond_to do |format|
