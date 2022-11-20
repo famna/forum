@@ -11,10 +11,9 @@
           <%= reply.reply %>
         </p>
       </div>
-
+    <%if reply_author(reply)%>
         <%= link_to "Edit reply", edit_discussion_reply_path(reply.discussion, reply)%>
         <%= button_to "Destroy this reply", [reply.discussion, reply], method: :delete %>
-       
-        
+    <%end%>
       
    

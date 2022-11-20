@@ -1,7 +1,8 @@
 class RepliesController < ApplicationController
     before_action :set_reply, only: [:edit, :update, :show, :destroy]
     before_action :set_discussion, only: [:create, :edit, :show, :update, :destroy]
-  
+    before_action :require_user_logged_in! , only: %i[ show ]
+
     def create
       @reply = @discussion.replies.create(params[:reply].permit(:reply, :discussion_id))
       @reply.user_id = session[:user_id]
@@ -28,9 +29,9 @@ class RepliesController < ApplicationController
     end
   
     def edit
-      @discussion = Discussion.find(params[:discussion_id])
+        @discussion = Discussion.find(params[:discussion_id])
       @reply = @discussion.replies.find(params[:id])
-    end
+        end
   
     def update
       @reply = @discussion.replies.find(params[:id])

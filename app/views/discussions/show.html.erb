@@ -8,16 +8,15 @@
   </p>
       <hr />
  <%= link_to "Back to discussions", discussions_path %>
-<%if session[:user_id] == @discussion[:user_id]%>
-
+<% if discussion_author(@discussion) %>
 <div>
 
   <%= link_to "Edit this discussion", edit_discussion_path(@discussion) %> |
     <%= button_to "Destroy this discussion", @discussion, method: :delete %>
 
 </div>
+<% end %>
 
-<%end%>
 
 </div>
 
