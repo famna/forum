@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :discussions
+  resources :discussions do
+  resources :replies
+end
   get "about", to:"about#index", as: :about
 
   get "password", to: "passwords#edit", as: :edit_password

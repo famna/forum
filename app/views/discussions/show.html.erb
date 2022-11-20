@@ -6,14 +6,26 @@
     <strong>Content:</strong>
     <%= @discussion.content %>
   </p>
-
-</div>
-
+      <hr />
+ <%= link_to "Back to discussions", discussions_path %>
+<%if session[:user_id] == @discussion[:user_id]%>
 
 <div>
 
   <%= link_to "Edit this discussion", edit_discussion_path(@discussion) %> |
-  <%= link_to "Back to discussions", discussions_path %>
+    <%= button_to "Destroy this discussion", @discussion, method: :delete %>
 
-  <%= button_to "Destroy this discussion", @discussion, method: :delete %>
 </div>
+
+<%end%>
+
+</div>
+
+    <h2 class="subtitle is-5 has-text-grey"><%= @discussion.replies.count %> Replies</h2>
+
+    <div id="discussion-replies">
+      <%= render @discussion.replies %>
+    </div>
+
+    <hr />
+     <%= render 'replies/form' %>
