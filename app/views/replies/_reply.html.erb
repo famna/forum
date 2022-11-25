@@ -13,7 +13,7 @@
       </div>
     <%if reply_author(reply)%>
         <%= link_to "Edit reply", edit_discussion_reply_path(reply.discussion, reply)%>
-        <%= button_to "Destroy this reply", [reply.discussion, reply], method: :delete %>
+        <%= button_to "Destroy this reply", [reply.discussion, reply], method: :delete , class: "btn btn-primary"%>
     <%end%>
       
    

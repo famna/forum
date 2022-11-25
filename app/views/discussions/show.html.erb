@@ -9,10 +9,10 @@
       <hr />
  <%= link_to "Back to discussions", discussions_path %>
 <% if discussion_author(@discussion) %>
-<div>
+  <div class="mb3">
 
-  <%= link_to "Edit this discussion", edit_discussion_path(@discussion) %> |
-    <%= button_to "Destroy this discussion", @discussion, method: :delete %>
+  <%= link_to "Edit this discussion", edit_discussion_path(@discussion) %> 
+    <%= button_to "Destroy this discussion", @discussion, method: :delete, class: "btn btn-primary" %>
 
 </div>
 <% end %>
