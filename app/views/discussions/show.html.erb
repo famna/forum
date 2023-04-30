@@ -1,18 +1,30 @@
 
-<%= render @discussion %>
-
 <div id="<%= dom_id @discussion %>">
   <p class="text-break">
-    <strong>Content:</strong>
-    <%= @discussion.content %>
+    <strong>Title:</strong>
+    <%= @discussion.title %>
+    <hr />
+
+      <%= @discussion.content %>
   </p>
       <hr />
- <%= link_to "Back to discussions", discussions_path %>
-<% if discussion_author(@discussion) %>
-  <div class="mb3">
+ 
+ <div class="btn-group">
+ <%= link_to discussions_path do%> 
+   <button type="button"  class="btn btn-sm btn-outline-secondary">Back to discussions</button>
+   <%end%>
+          </div>
 
-  <%= link_to "Edit this discussion", edit_discussion_path(@discussion) %> 
-    <%= button_to "Destroy this discussion", @discussion, method: :delete, class: "btn btn-primary" %>
+<% if discussion_author(@discussion) %>
+
+  <div class="mb3">
+  
+  <%= link_to edit_discussion_path(@discussion) do%> 
+  <button type="button"  class="btn btn-sm btn-outline-secondary">Edit</button>
+  <%end%>
+
+  <hr />
+  <%= button_to "Destroy this discussion", @discussion, method: :delete, class: "btn btn-primary" %>
 
 </div>
 <% end %>
@@ -20,7 +32,7 @@
 
 </div>
 
-    <h2 class="subtitle is-5 has-text-grey"><%= @discussion.replies.count %> Replies</h2>
+    <h2 class="subtitle is-5 has-text-grey"> Replies</h2>
 
     <div id="discussion-replies">
       <%= render @discussion.replies %>

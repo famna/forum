@@ -1,10 +1,29 @@
-<div id="<%= dom_id discussion %>">
-  <p>
-    <strong>Title:</strong>
-    <%= link_to discussion.title, discussion %>
-    
-  </p>
 
+<div class="album py-5 bg-light" >
+<div class="container">
+
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="col">
+      <div class="card shadow-sm">       
+        <div class="card-body">
+          <p class="card-text"> <%= discussion.title %> </p>
+          <div class="d-flex justify-content-between align-items-center">
+            <div class="btn-group">
+            <%= link_to discussion do%> 
+              <button type="button"  class="btn btn-sm btn-outline-secondary", discussion >View</button>
+              <%end%>
+                     </div>
+            <small class="text-muted"> Replies: <%= discussion.replies.count %>  </small>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    
+  </div>
+</div>
+</div>
+</div>
 
 </div>
    
